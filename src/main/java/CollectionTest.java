@@ -1,4 +1,3 @@
-import com.google.common.collect.*;
 
 import java.util.*;
 
@@ -7,14 +6,6 @@ public class CollectionTest {
 
     public static void main(String[] args){
         System.out.println("start");
-        ImmutableSet<String> foobar = ImmutableSet.of("foo", "bar", "baz");
-
-
-        ImmutableList<Integer> intlist = ImmutableList.of(1,2,3,4);
-        ImmutableList<Integer> intlist2 = ImmutableList.of();
-        System.out.println(intlist2.size());
-
-        ImmutableMap<Integer,Float> map = ImmutableMap.of(1 ,3.0f);
 
         
 
@@ -51,9 +42,12 @@ public class CollectionTest {
 
         String blub = "asdaf";
         Set<Character> blubx = null;
-        blubx.
-        return ret;
 
 
+
+
+        LinkedList<String> ll = new LinkedList<>();
+
+        return null;
     }
 }

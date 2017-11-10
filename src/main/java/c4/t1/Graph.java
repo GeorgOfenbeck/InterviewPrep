@@ -52,7 +52,7 @@ public class Graph {
                         newtodo.add(neigh[i]);
                         visited.add(neigh[i]);
                         if (other.contains(neigh[i]))
-                            return new ReturnTuple(visited, todo, other, true)
+                            return new ReturnTuple(visited, todo, other, true);
                     }
                 }
             }
