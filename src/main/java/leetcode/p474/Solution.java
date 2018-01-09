@@ -1,6 +1,5 @@
 package leetcode.p474;
 
-import dynprog.zerooneKnapsack.Solutio;
 import java.util.*;
 
 class Solution {
