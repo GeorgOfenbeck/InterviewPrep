@@ -15,6 +15,10 @@ libraryDependencies += ("org.scala-lang" % "scala-compiler" % "2.11.11") //.with
 
 libraryDependencies += "org.scala-lang" % "scala-library" % scalaVersion.value
 
+// https://mvnrepository.com/artifact/com.google.guava/guava
+libraryDependencies += "com.google.guava" % "guava" % "27.0-jre"
+
+
 
 // tests are not thread safe
 parallelExecution in Test := false
