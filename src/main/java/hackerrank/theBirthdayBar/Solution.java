@@ -13,7 +13,31 @@ import static java.util.stream.Collectors.toList;
 
 public class Solution {
 
-    // Complete the birthday function below.
+    static int birthday2(List<Integer> s, int d, int m) {
+        Iterator<Integer> it = s.iterator();
+        LinkedList<Integer> buffer = new LinkedList<Integer>();
+        int ways = 0;
+        int sum =0;
+
+        int size = 0;
+        for (;it.hasNext() && size < m; ){
+            size ++;
+            Integer value = it.next();
+            buffer.addLast(value);
+            sum = sum + value;
+        }
+        if (sum == d) ways ++;
+
+        for (;it.hasNext(); ){
+            Integer value = it.next();
+            buffer.addLast(value);
+            Integer oldvalue = buffer.removeFirst();
+            sum = sum + value - oldvalue;
+            if (sum == d) ways ++;
+        }
+        return ways;
+    }
+
     static int birthday(List<Integer> s, int d, int m) {
         //m == length
         //d == sum
@@ -37,6 +61,7 @@ public class Solution {
         return ways;
 
     }
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
