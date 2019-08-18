@@ -1,11 +1,11 @@
-name := "InterviewPrep"
+name := "AlgorithmWorkBench"
 
 version := "1.0"
 
 organization := "ETHZ"
 
 //scalaVersion := "0.2.0-RC1"
-scalaVersion := "2.11.11"
+scalaVersion := "2.12.8"
 
 scalaSource in Compile <<= baseDirectory(_ / "src/main")
 
