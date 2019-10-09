@@ -32,6 +32,6 @@ class Solution {
             Trie.addToTrie(root,words[i]);
         }
 
-        
+        return 1;
     }
 }
