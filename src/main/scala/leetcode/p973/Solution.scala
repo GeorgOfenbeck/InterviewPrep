@@ -27,6 +27,8 @@ object Blub extends App{
 
 object Solution {
 
+  System.nanoTime()
+
   def kClosest(points: Array[Array[Int]], K: Int): Array[Array[Int]] = {
     val res = points.map(point => {
       val x = point(0)
