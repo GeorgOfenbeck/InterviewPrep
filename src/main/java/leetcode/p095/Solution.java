@@ -36,6 +36,40 @@ import java.util.*;
  * }
  */
 class Solution {
+    HashMap<Tripple, List<TreeNode>> hmap = new HashMap();
+    class Tripple implements Comparable<Tripple> {
+
+
+            Tripple(int start, int stop, int root){
+            this.start = start;
+            this.stop = stop;
+            this.root = root;
+        }
+        int start;
+        int stop;
+        int root;
+
+        @Override
+        public int compareTo(Tripple o) {
+            if (this.root == o.root && this.start == o.start && this.stop == o.stop) return 0;
+            else return 1;
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (o.getClass() == this.getClass()) {
+                Tripple other = (Tripple) o;
+                return 1 == this.compareTo(other);
+            }
+            else
+                return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return start + stop*100 + root* 10000;
+        }
+
+    }
 
     public static void main (String[] args){
         Solution sol = new Solution();
@@ -44,6 +78,7 @@ class Solution {
     }
 
     public List<TreeNode> generateTrees(int n) {
+
         List<TreeNode> result = new LinkedList<>();
         for (int i = 1; i <= n; i++) {
             List<TreeNode> trees = generateTrees(1, n, i);
@@ -55,6 +90,9 @@ class Solution {
     }
 
     public List<TreeNode> generateTrees(int start, int stop, int root) {
+        Tripple t = new Tripple(start,stop,root);
+        if (hmap.containsKey(t))
+            return hmap.get(t);
         if (start == stop) {
             List<TreeNode> list = new LinkedList<>();
             TreeNode leaf = new TreeNode(root);
@@ -86,9 +124,9 @@ class Solution {
                 }
             }
             if (right.isEmpty()) {
-                for (TreeNode r : right) {
+                for (TreeNode l : left) {
                     TreeNode rootnode = new TreeNode(root);
-                    rootnode.right = r;
+                    rootnode.left = l;
                     result.add(rootnode);
                 }
             }
@@ -101,6 +139,7 @@ class Solution {
                     result.add(rootnode);
                 }
             }
+            hmap.put(t,result);
             return result;
 
         }

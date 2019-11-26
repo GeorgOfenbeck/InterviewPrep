@@ -17,6 +17,7 @@ libraryDependencies += "org.scala-lang" % "scala-library" % scalaVersion.value
 
 // https://mvnrepository.com/artifact/com.google.guava/guava
 libraryDependencies += "com.google.guava" % "guava" % "27.0-jre"
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.1" % "test"
 
 
 
