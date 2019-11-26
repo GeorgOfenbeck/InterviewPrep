@@ -2,7 +2,7 @@ package hackerrank.MagicSquareForming
 
 
 object Solution_Scala {
-
+/*
   // Complete the formingMagicSquare function below.
   def formingMagicSquare(s: Array[Array[Int]]): Int = {
 
@@ -65,4 +65,6 @@ object Solution_Scala {
 
     printWriter.close()
   }
+
+ */
 }
