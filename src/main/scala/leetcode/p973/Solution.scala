@@ -21,6 +21,26 @@ object Blub extends App{
 
   val totalres = res.reduce( (a,b) => a + b)
 
+  case class Signal(s: String)
+  def remainingCharsCount():Int = 15
+
+  val res1 = if (remainingCharsCount() >= 15) Signal("green")
+  else if (remainingCharsCount() < 0) Signal("red")
+  else Signal("orange")
+
+  val res2 = Signal {
+    val remaining = remainingCharsCount()
+    if (remaining >= 15) {
+      "green"
+    } else if (remaining >= 0) {
+      "orange"
+    } else {
+      "red"
+    }
+  }
+
+  println(res1)
+  println(res2)
 
 }
 
