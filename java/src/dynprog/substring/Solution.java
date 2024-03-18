@@ -1,6 +1,5 @@
 package dynprog.substring;
 
-import scala.Char;
 
 import java.util.Iterator;
 import java.util.*;

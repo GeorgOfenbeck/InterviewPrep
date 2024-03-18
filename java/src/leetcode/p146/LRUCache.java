@@ -1,7 +1,6 @@
 package leetcode.p146;
 
 import java.util.*;
-import scala.collection.mutable.HashTable;
 
 class LRUCache {
 

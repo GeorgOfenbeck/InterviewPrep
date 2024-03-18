@@ -1,6 +1,6 @@
 package leetcode.p583;
 
-import scala.Char;
+
 
 import java.math.BigInteger;
 import java.util.Iterator;

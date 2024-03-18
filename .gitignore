@@ -9,3 +9,6 @@ target
 virtualization-lms-core.iml
 .gitingore
 #test-out
+out
+.bloop
+.metals

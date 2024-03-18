@@ -1,6 +1,5 @@
 package c1.t4;
 
-import scala.Int;
 
 import java.util.HashMap;
 
