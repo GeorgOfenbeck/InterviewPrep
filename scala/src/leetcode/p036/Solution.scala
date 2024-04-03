@@ -56,5 +56,7 @@ object Solution {
     }
     }
 
-  def main(): Unit = {}
-}
+    def main(args: Array[String]): Unit = {
+    }
+
+  }
