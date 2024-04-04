@@ -5,12 +5,12 @@ import scala.util.boundary
 
 
 object Solution {
-    
+    val print = false
 
 
     def palindromePairs(words: Array[String]): List[List[Int]] = {
         val forpairs = palindromePairsForward(words)
-        val backpairs = palindromePairsForward(words.reverse)
+        val backpairs = palindromePairsForward(words.reverse).map(v => List(words.length - v(0) - 1, words.length - v(1) - 1))
         forpairs ++ backpairs
     }
     def palindromePairsForward(words: Array[String]): List[List[Int]] = {
@@ -19,14 +19,16 @@ object Solution {
                 val (word, idx) = pair
                 val (prefixTree, result) = acc
                 val reversed = word.reverse
-                val searchResult = prefixTree.search(reversed)
+                val searchResult = prefixTree.search(word)
                 val newtree = prefixTree.insert(reversed, idx) 
                 (newtree, result ++ searchResult.toList.map(i => List( idx, i)))
             }
         )
+        if (print){
         forwardtree.printTree()
         println(forwardlist)
         println("==============")
+    }
         forwardlist
     }
         
