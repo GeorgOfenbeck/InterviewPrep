@@ -1,6 +1,5 @@
 package leetcode.p336
 
-import scala.leetcode.p973.Blub.v
 import scala.util.boundary
 
 
