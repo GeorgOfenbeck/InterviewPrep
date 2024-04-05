@@ -35,9 +35,17 @@ object Solution {
 
 
     def main(args: Array[String]): Unit = {
+        /*{
         val words = Array("abcd", "dcba", "lls", "s", "sssll")
         val result = palindromePairs(words)
         result.foreach(v => println(v.mkString("[", ", ", "]")))
+        }*/
+        {
+        println("==============")
+        val words = Array("a", ""  )
+        val result = palindromePairs(words)
+        result.foreach(v => println(v.mkString("[", ", ", "]")))
+        }
     }
 }
 
