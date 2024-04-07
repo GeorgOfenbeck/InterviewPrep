@@ -42,7 +42,7 @@ object Solution {
         }*/
         {
         println("==============")
-        val words = Array("a", ""  )
+        val words = Array("a","aa","aaa")
         val result = palindromePairs(words)
         result.foreach(v => println(v.mkString("[", ", ", "]")))
         }
@@ -63,20 +63,37 @@ case class PrefixTree(childen: Map[Char, PrefixTree], terminal: Set[Int], remain
             val tail = word.tail
             val child = childen.getOrElse(head, PrefixTree())
             val newChild = child.insert(tail, idx)
-            val restPalindrome = if (isPalindrome(tail)) remainPalindrome + idx else remainPalindrome
-            PrefixTree(childen + (head -> newChild), terminal, restPalindrome)
+            val checkPalindrome = if (isPalindrome(word)) remainPalindrome + idx else remainPalindrome
+            PrefixTree(childen + (head -> newChild), terminal, checkPalindrome)
         }
     }
 
+     
     def search(word: String): Set[Int] = {
+        if (!terminal.isEmpty && isPalindrome(word)) {
+            terminal ++ search_recurse(word)
+        } else {
+            search_recurse(word)
+        }
+    }
+
+    def search_recurse(word: String): Set[Int] = {
         if (word.isEmpty) {
             terminal ++ remainPalindrome
         } else {
             val head = word.head
             val tail = word.tail
             childen.get(head) match {
-                case Some(child) => child.search(tail)
-                case None => Set.empty
+                case Some(child) => {
+                    if (terminal.isEmpty) child.search_recurse(tail)
+                    else if (isPalindrome(word)) terminal ++ child.search_recurse(tail)
+                    else child.search_recurse(tail)
+                }
+                case None => {
+                    if(terminal.isEmpty) Set.empty
+                    else if (isPalindrome(word)) terminal 
+                    else Set.empty
+                }
             }
         }
     }
