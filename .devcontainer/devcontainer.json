@@ -45,7 +45,8 @@
         "ghcr.io/devcontainers-contrib/features/tmux-apt-get:1": {},
         "ghcr.io/guiyomh/features/vim:0": {},
         "ghcr.io/georgofenbeck/features/thefuck-pipx:1": {},
-        "ghcr.io/georgofenbeck/features/lazygit-linuxbinary:latest": {}
+        "ghcr.io/georgofenbeck/features/lazygit-linuxbinary:latest": {},
+        "ghcr.io/georgofenbeck/features/ammonite-linuxbinary:latest": {},
 
         },
         "overrideFeatureInstallOrder": [
