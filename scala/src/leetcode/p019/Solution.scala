@@ -1,4 +1,4 @@
-
+/*
 package scala.leetcode.p019
 
 import scala.leetcode.p019.ListNode
@@ -31,4 +31,4 @@ object Solution {
         }
         length
     }
-}
+} */
