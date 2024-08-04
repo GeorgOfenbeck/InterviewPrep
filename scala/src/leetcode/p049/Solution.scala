@@ -1,11 +1,13 @@
+package leetcode.p049
+
 import java.util.BitSet
 import java.{util => ju}
 import java.{util => ju}
 
 object Solution {
   @main
-  def testit() = {
-    val strs = Array("hhhhu","tttti","tttit","hhhuh","hhuhh","tittt")
+  def main() = {
+    val strs = Array("hhhhu", "tttti", "tttit", "hhhuh", "hhuhh", "tittt")
     groupAnagrams(strs)
   }
 
@@ -16,16 +18,16 @@ object Solution {
     }
 
     val map = scala.collection.mutable.HashMap.empty[ju.BitSet, List[String]]
-    val smap = scala.collection.mutable.HashMap.empty[Array[Int], List[String]]
+    val smap = scala.collection.mutable.HashMap.empty[MultPrint, List[String]]
 
     for (f <- fingerprints) {
       if (f.hasMulti) {
 
-        if (smap.contains(f.farray)) {
-          val prev = smap.get(f.farray).get
-          smap.put(f.farray, f.str +: prev)
+        if (smap.contains(f.multprint)) {
+          val prev = smap.get(f.multprint).get
+          smap.put(f.multprint, f.str +: prev)
         } else {
-          smap.put(f.farray, List(f.str))
+          smap.put(f.multprint, List(f.str))
         }
 
       } else {
@@ -49,10 +51,28 @@ object Solution {
 
   }
 
-  class FingerPrint(val str: String) {
-
-    val bitSet: ju.BitSet = new ju.BitSet(32)
+  class MultPrint(val str: String) {
     var farray: Array[Int] = null
+    farray = new Array[Int](28)
+    for (c <- str) {
+      if (c.isValidChar) {
+        val l = c.toLower
+        val pos = c.toInt - 'a'.toInt
+        farray.hashCode()
+        farray(pos) = farray(pos) + 1
+      }
+    }
+    override def hashCode(): Int = java.util.Arrays.hashCode(farray)
+    override def equals(x: Any): Boolean = if (x.isInstanceOf[MultPrint]) {
+      val y = x.asInstanceOf[MultPrint]
+      java.util.Arrays.equals(this.farray, y.farray)
+    } else
+      false
+  }
+
+  class FingerPrint(val str: String) {
+    var multprint: MultPrint = null
+    val bitSet: ju.BitSet = new ju.BitSet(32)
     var hasMulti = false
     for (c <- str) {
       if (c.isValidChar) {
@@ -65,14 +85,7 @@ object Solution {
       }
     }
     if (hasMulti) {
-      farray = new Array[Int](28)
-      for (c <- str) {
-        if (c.isValidChar) {
-          val l = c.toLower
-          val pos = c.toInt - 'a'.toInt
-          farray(pos) = farray(pos) + 1
-        }
-      }
+      multprint = new MultPrint(str)
     }
   }
 }
