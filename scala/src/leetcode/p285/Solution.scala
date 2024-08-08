@@ -2,8 +2,8 @@ package leetcode.p285
 
 import scala.annotation.tailrec
 
-class TreeNode(var value: Int) {
-  var value: Int = value
+class TreeNode(var _value: Int) {
+  var value: Int = _value
   var left: TreeNode = null
   var right: TreeNode = null
 }
