@@ -24,8 +24,9 @@ object Solution {
       if (posSet.head.land) {
         nrIslands = nrIslands + 1
         posSet = explore(posSet, posSet.head, grid)
+      } else {
+        posSet = posSet - posSet.head
       }
-      posSet = posSet - posSet.head
     }
     nrIslands
   }
@@ -35,9 +36,12 @@ object Solution {
       root: Pos,
       grid: Array[Array[Char]]
   ): Set[Pos] = {
+    if (remain.isEmpty || !remain.contains(root))
+      return remain
+
     val withoutroot = remain - root
     if (root.land != true)
-      return remain
+      return withoutroot
     val x = root.x
     val y = root.y
     val up = Pos(x - 1, y, x > 0 && grid(x - 1)(y) == '1')
@@ -51,15 +55,13 @@ object Solution {
     )
   }
 
-
   @main
   def main() = {
     val grid = Array(
       Array('1', '1', '1', '1', '0'),
       Array('1', '1', '0', '1', '0'),
       Array('1', '1', '0', '0', '0'),
-      Array('0', '0', '0', '0', '0')
+      Array('0', '0', '0', '0', '1')
     )
-    numIslands(grid)
   }
 }
