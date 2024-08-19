@@ -31,9 +31,9 @@ object Solution {
   ): (TreeNode, Int) = {
 
     if (leftBorder == rightBorder)
-        return null
+        return (null, rootidx - 1)
     
-    val root = preorder(leftBorder)
+    val root = preorder(rootidx)
     val posRoot = lookup.get(root).get
 
 
@@ -43,7 +43,7 @@ object Solution {
     //al (leftPreOrder, rightPreOrder) = preorder.tail.splitAt(leftSubTree.size)
 
     val (left, leftidx) = second(leftBorder, posRoot, rootidx + 1, preorder, inorder, lookup)
-    val (right, rightidx) = second(posRoot + 1, leftidx + 1, rightBorder, preorder, inorder, lookup)
+    val (right, rightidx) = second(posRoot + 1, rightBorder, leftidx + 1, preorder, inorder, lookup)
 
     (TreeNode(root, left, right), rightidx) 
   }
