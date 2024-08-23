@@ -1,18 +1,19 @@
 package leetcode.p332
 
 import scala.math.Ordering.IntOrdering
+import scala.annotation.tailrec
 
 object Solution {
   def coinChange(coins: Array[Int], amount: Int): Int = {
     val coins_dec = coins.sorted(scala.math.Ordering.Int)
 
-    rec(Set.empty, Map(0 -> 0), List(0), amount, coins_dec)
+    rec(Set.empty, Map(0 -> 0), Vector(0), amount, coins_dec)
   }
-
+  @tailrec
   def rec(
       visted: Set[Int],
       minCoins: Map[Int, Int],
-      todo: List[Int],
+      todo: Vector[Int],
       target: Int,
       coinsDec: Array[Int]
   ): Int = {
@@ -33,7 +34,7 @@ object Solution {
         if (!newvisited.contains(sum) && (sum) <= target) {
           newvisited = newvisited + (sum)
           newmiCoins = newmiCoins + ((sum) -> (sofar + 1))
-          newtodo = (sum) +: newtodo
+          newtodo = newtodo :+ sum
         }
       }
     }
