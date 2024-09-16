@@ -11,11 +11,16 @@ Return true if n is a happy number, and false if not.
 
 object Solution {
     def isHappy(n: Int): Boolean = {
-       val set = scala.collection.mutable.Set[Int]            
+       val set = scala.collection.mutable.Set.empty[Int]            
        
        if (n == 1) return true
        else {
-            
+            var num = n
+            while (!set.contains(num))    {
+                set.add(num)
+                num = squareofDigits(num)
+            } 
+            if (num == 1) return true else false
        }
        
     }
@@ -25,7 +30,7 @@ object Solution {
         var digits = List.empty[Int]
         while (remain > 0){
             val cur = remain % 10
-            digits = cur +: digits
+            digits = (cur * cur) +: digits
             remain = remain / 10
         }
         digits.sum
