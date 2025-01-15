@@ -12,7 +12,6 @@ object xxx {
     println(x)
   }
 }
-
 object Solution {
   implicit object PosOrdering extends Ordering[Pos] {
     def compare(x: Pos, y: Pos): Int = {
@@ -51,3 +50,5 @@ object Solution {
 
   case class Pos(val value: Int, val idx: Int, var seq: Int)
 }
+
+
