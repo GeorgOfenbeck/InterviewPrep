@@ -1,4 +1,4 @@
-package p024
+package leetcode.p024
 
 class ListNode(_x: Int = 0, _next: ListNode = null) {
   var next: ListNode = _next

@@ -3,6 +3,11 @@ package leetcode.p024
 /** Definition for singly-linked list. class ListNode(_x: Int = 0, _next:
   * ListNode = null) { var next: ListNode = _next var x: Int = _x }
   */
+@main
+def main(): Unit = {
+  Solution.swapPairs(ListNode(1, ListNode(2, ListNode(3, ListNode(4, null)))))
+}
+
 object Solution {
   def swapPairs(head: ListNode): ListNode = {
     if (head == null) return head
