@@ -21,7 +21,7 @@ object java extends JavaModule {
 
 
 object scala extends ScalaModule {
-  def scalaVersion = "3.3.3"
+  def scalaVersion = "3.6.3"
   def ammoniteVersion = "3.0.0-M1"
 
   // You can have arbitrary numbers of third-party dependencies
@@ -39,6 +39,5 @@ object scala extends ScalaModule {
     "-unchecked",
     "-Xfatal-warnings",
     //"-Yexplicit-nulls",
-    "-Ysafe-init",
   )
 }
